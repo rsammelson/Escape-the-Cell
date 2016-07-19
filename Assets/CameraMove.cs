@@ -6,7 +6,8 @@ public class CameraMove : MonoBehaviour
 	private float Horizontal;
 	private float Vertical;
 
-	private Vector3 move;
+	private Vector3 moveV;
+	private Vector3 moveH;
 
 	// Use this for initialization
 	void Start ()
@@ -14,7 +15,8 @@ public class CameraMove : MonoBehaviour
 		Horizontal = 0;
 		Vertical = 0;
 
-		move = new Vector3 (0, 0, 0);
+		moveV = new Vector3 (0, 0, 0);
+		moveH = new Vector3 (0, 0, 0);
 	}
 	
 	// Update is called once per frame
@@ -23,8 +25,10 @@ public class CameraMove : MonoBehaviour
 		Horizontal = Input.GetAxis ("Horizontal");
 		Vertical = Input.GetAxis ("Vertical");
 
-		move = new Vector3 (Vertical * -1, Horizontal, 0);
+		moveV = new Vector3 (Vertical * -1, 0);
+		moveH = new Vector3 (0, Horizontal, 0);
 
-		transform.Rotate (move);
+		transform.Rotate (moveV);
+		transform.Rotate (moveH, Space.World);
 	}
 }
