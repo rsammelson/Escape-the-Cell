@@ -3,12 +3,16 @@ using System.Collections;
 
 public class ClickDetector : MonoBehaviour
 {
+	public GameObject hitObject;
+	public string hitName;
 	public bool wasHit = false;
 
 	// Use this for initialization
 	void Start ()
 	{
-	
+		wasHit = false;
+		hitName = null;
+		hitObject = null;
 	}
 
 	// Update is called once per frame
@@ -22,10 +26,12 @@ public class ClickDetector : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast (ray, out hit)) {
 			wasHit = true;
-			print ("I'm looking at " + hit.transform.name);
+			hitName = hit.transform.name;
+			hitObject = hit.collider.gameObject;
 		} else {
 			wasHit = false;
-			print ("I'm looking at nothing!");
+			hitName = null;
+			hitObject = null;
 		}
 	}
 }
