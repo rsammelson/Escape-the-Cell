@@ -1,4 +1,6 @@
-
 Temp/UnityLockfile
+
+Temp/*
+Temp/
 
 *.log
