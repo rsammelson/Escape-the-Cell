@@ -54,4 +54,9 @@ public class ClickDetector : MonoBehaviour
 			return false;
 		}
 	}
+
+	public void onInventory ()
+	{
+		
+	}
 }
