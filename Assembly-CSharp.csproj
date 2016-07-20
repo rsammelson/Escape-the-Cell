@@ -48,6 +48,7 @@
      <Compile Include="Assets\CameraMove.cs" />
      <Compile Include="Assets\ClickDetector.cs" />
      <Compile Include="Assets\OnClick.cs" />
+     <Compile Include="Assets\sizeScript.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
