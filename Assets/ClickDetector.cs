@@ -28,10 +28,30 @@ public class ClickDetector : MonoBehaviour
 			wasHit = true;
 			hitName = hit.transform.name;
 			hitObject = hit.collider.gameObject;
+
+			if (wasClicked ()) {
+				if (hitObject.tag == "clickable") {
+					OnClick onClick = hitObject.GetComponent<OnClick> ();
+
+					int id = onClick.id;
+					print ("clicked: " + id);
+
+					onClick.OnThisObjectClicked (0);
+				}
+			}
 		} else {
 			wasHit = false;
 			hitName = null;
 			hitObject = null;
+		}
+	}
+
+	public static bool wasClicked ()
+	{
+		if (Input.GetMouseButtonDown (0)) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 }
