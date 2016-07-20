@@ -36,7 +36,7 @@ public class ClickDetector : MonoBehaviour
 					int id = onClick.id;
 					print ("clicked: " + id);
 
-					onClick.OnThisObjectClicked ();
+					onClick.OnThisObjectClicked (0);
 				}
 			}
 		} else {
