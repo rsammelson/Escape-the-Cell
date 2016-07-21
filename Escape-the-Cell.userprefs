@@ -1,8 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Click Detector.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/OnClick.cs">
     <Files>
-      <File FileName="Assets/Click Detector.cs" Line="21" Column="18" />
+      <File FileName="Assets/Inventory_Slot_Placer.cs" Line="12" Column="24" />
+      <File FileName="Assets/ClickDetector.cs" Line="12" Column="29" />
+      <File FileName="Assets/OnClick.cs" Line="51" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
