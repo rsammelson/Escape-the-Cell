@@ -1,10 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Inventory_Slot_Placer : MonoBehaviour
 {
 	private Vector2 screenSize;
 	private Vector2 lastScreenSize;
+
+	private int[,] map;
+
+	private List<GameObject> objectsMade;
+
+	public Object prefab;
 
 	// Use this for initialization
 	void Start ()
@@ -29,11 +36,39 @@ public class Inventory_Slot_Placer : MonoBehaviour
 
 	void PlaceInventorySlots (Vector2 sizeOfScreen)
 	{
+		GameObject Slot1 = GameObject.Find ("InventorySlot");
+
+		Slot1.SetActive (false);
+
+//		foreach (GameObject thingToDestroy in objectsMade) {
+//			Destroy (thingToDestroy);
+//		}
+
+		objectsMade = new List<GameObject> ();
+
 		int x = (int)(sizeOfScreen.x - 100);
 		int y = (int)(sizeOfScreen.y - 100);
 
 		print (x);
 		print (y);
+
+		int numX = Slots (x, 75, 25);
+		int numY = Slots (y, 115, 25);
+
+		print ("Number of slots Horizontally: " + numX);
+		print ("Number of slots Vertically: " + numY);
+
+		for (int iX = 0; iX < numX; x++) {
+			for (int iY = 0; iY < numY; y++) {
+				if (iX == 0 && iY == 0) {
+					Slot1.SetActive (true);
+				} else {
+					Instantiate (prefab, SlotLocation (), new Quaternion (0, 0, 0, 0));
+					print (iX);
+					print (iY);
+				}
+			}
+		}
 	}
 
 	public static int Slots (int sizeOfArea, int sizeOfObject, int spaceBetween)
@@ -48,7 +83,7 @@ public class Inventory_Slot_Placer : MonoBehaviour
 
 		int n;
 
-		if (((s * 2) + b) >= a) {
+		if (a >= ((s * 2) + b)) {
 			n = 2;
 			aR = a - ((s * 2) + b);
 
@@ -56,8 +91,17 @@ public class Inventory_Slot_Placer : MonoBehaviour
 				n += 1;
 				aR = aR - i;
 			}
+		} else if (a >= s) {
+			n = 1;
+		} else {
+			n = 0;
 		}
 
 		return n;
+	}
+
+	public static Vector3 SlotLocation ()
+	{
+		return new Vector3 (0, 0, 0);
 	}
 }
