@@ -38,7 +38,7 @@ public class Inventory_Slot_Placer : MonoBehaviour
 	{
 		GameObject Slot1 = GameObject.Find ("InventorySlot");
 
-		Slot1.SetActive (false);
+//		Slot1.SetActive (false);
 
 //		foreach (GameObject thingToDestroy in objectsMade) {
 //			Destroy (thingToDestroy);
@@ -58,12 +58,13 @@ public class Inventory_Slot_Placer : MonoBehaviour
 		print ("Number of slots Horizontally: " + numX);
 		print ("Number of slots Vertically: " + numY);
 
-		for (int iX = 0; iX < numX; x++) {
-			for (int iY = 0; iY < numY; y++) {
+		for (int iX = 0; iX < numX; iX++) {
+			print ("x");
+			for (int iY = 0; iY < numY; iY++) {
 				if (iX == 0 && iY == 0) {
-					Slot1.SetActive (true);
+//					Slot1.SetActive (true);
 				} else {
-					Instantiate (prefab, SlotLocation (), new Quaternion (0, 0, 0, 0));
+//					Instantiate (prefab, SlotLocation (), new Quaternion (0, 0, 0, 0));
 					print (iX);
 					print (iY);
 				}
