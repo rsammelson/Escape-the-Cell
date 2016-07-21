@@ -9,7 +9,7 @@ public class Inventory_Slot_Placer : MonoBehaviour
 
 	private int[,] map;
 
-	private List<GameObject> objectsMade;
+	public List<GameObject> objectsMade;
 
 	public GameObject firstSlot;
 
