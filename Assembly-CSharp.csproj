@@ -47,6 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\CameraMove.cs" />
      <Compile Include="Assets\ClickDetector.cs" />
+     <Compile Include="Assets\Inventory_Slot_Placer.cs" />
      <Compile Include="Assets\OnClick.cs" />
      <Compile Include="Assets\sizeScript.cs" />
  <Reference Include="UnityEngine.UI">
