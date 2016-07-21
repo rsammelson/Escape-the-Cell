@@ -9,6 +9,8 @@ public class ClickDetector : MonoBehaviour
 
 	public bool inventoryIsEnabled;
 
+	public int objectInHand = 0;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -47,7 +49,7 @@ public class ClickDetector : MonoBehaviour
 					int id = onClick.id;
 					print ("clicked: " + id);
 
-					onClick.OnThisObjectClicked (0);
+					onClick.OnThisObjectClicked (objectInHand);
 				}
 			}
 		} else {
@@ -91,5 +93,10 @@ public class ClickDetector : MonoBehaviour
 		} else {
 			inventoryIsEnabled = false;
 		}
+	}
+
+	public void objectInHandSet (int inHand)
+	{
+		objectInHand = inHand;
 	}
 }
