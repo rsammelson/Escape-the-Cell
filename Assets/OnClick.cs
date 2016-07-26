@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEditor;
 
 public class OnClick : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class OnClick : MonoBehaviour
 	public string incorrectMessage;
 
 	public GameObject slots;
+
+	// public Sprite sprite;
 
 	// Use this for initialization
 	void Start ()
@@ -39,16 +43,58 @@ public class OnClick : MonoBehaviour
 		Inventory_Slot_Placer inventory_Slot_Placer = slots.GetComponent<Inventory_Slot_Placer> ();
 		List<GameObject> availableSlots = inventory_Slot_Placer.objectsMade;
 		GameObject slotToFill = availableSlots [0];
-		availableSlots.RemoveAt (0);
 
 		slotToFill.SetActive (true);
 
-		fillSlotWithData ();
+		FillSlotWithData (slotToFill);
+
+		availableSlots.RemoveAt (0);
 
 		Destroy (gameObject);
 	}
 
-	void fillSlotWithData ()
+	void FillSlotWithData (GameObject slotToBeFilled)
 	{
+		string name = transform.name;
+
+		string nameOfSpriteAsset = name + "Sprite.jpg";
+		string spritePath = "Assets/Sprites/" + nameOfSpriteAsset;
+
+		FillText (slotToBeFilled, name);
+
+		FillImage (slotToBeFilled, spritePath);
+
+		Button slotButton = slotToBeFilled.GetComponent<Button> ();
+		;
+		setId (slotButton);
+	}
+
+	void FillText (GameObject fillSlot, string textToAdd)
+	{
+		GameObject textObject = fillSlot.transform.GetChild (0).gameObject;
+		Text text = textObject.GetComponent<Text> ();
+		text.text = textToAdd;
+	}
+
+	void FillImage (GameObject fillSlot, string pathOfSprite)
+	{
+		Sprite sprite = AssetDatabase.LoadAssetAtPath (pathOfSprite, typeof(Sprite)) as Sprite;
+
+		GameObject imageObject = fillSlot.transform.GetChild (1).gameObject;
+		Image image = imageObject.GetComponent<Image> ();
+
+		print (pathOfSprite);
+		print (sprite);
+
+		image.sprite = sprite;
+	}
+
+	void setId (Button fillSlot)
+	{
+		GameObject mainCamera = GameObject.Find ("Main Camera");
+		ClickDetector clickDetector = mainCamera.GetComponent<ClickDetector> ();
+		fillSlot.onClick.AddListener (() => {
+			clickDetector.objectInHandSet (id);
+		});
 	}
 }
