@@ -45,13 +45,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CameraMove.cs" />
-     <Compile Include="Assets\ClickDetector.cs" />
-     <Compile Include="Assets\InventoryHelper.cs" />
-     <Compile Include="Assets\Inventory_Slot_Placer.cs" />
-     <Compile Include="Assets\OnClick.cs" />
-     <Compile Include="Assets\TimeUntilHide.cs" />
-     <Compile Include="Assets\sizeScript.cs" />
+     <Compile Include="Assets\Scripts\CameraMove.cs" />
+     <Compile Include="Assets\Scripts\ClickDetector.cs" />
+     <Compile Include="Assets\Scripts\InventoryHelper.cs" />
+     <Compile Include="Assets\Scripts\Inventory_Slot_Placer.cs" />
+     <Compile Include="Assets\Scripts\OnClick.cs" />
+     <Compile Include="Assets\Scripts\TimeUntilHide.cs" />
+     <Compile Include="Assets\Scripts\sizeScript.cs" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
