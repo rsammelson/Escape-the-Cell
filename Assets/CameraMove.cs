@@ -22,13 +22,16 @@ public class CameraMove : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		Horizontal = Input.GetAxis ("Horizontal");
-		Vertical = Input.GetAxis ("Vertical");
+		ClickDetector clickDetector = GetComponent<ClickDetector> ();
+		if (!clickDetector.inventoryIsEnabled) {
+			Horizontal = Input.GetAxis ("Horizontal");
+			Vertical = Input.GetAxis ("Vertical");
 
-		moveV = new Vector3 (Vertical * -1, 0);
-		moveH = new Vector3 (0, Horizontal, 0);
+			moveV = new Vector3 (Vertical * -1, 0);
+			moveH = new Vector3 (0, Horizontal, 0);
 
-		transform.Rotate (moveV);
-		transform.Rotate (moveH, Space.World);
+			transform.Rotate (moveV);
+			transform.Rotate (moveH, Space.World);
+		}
 	}
 }
