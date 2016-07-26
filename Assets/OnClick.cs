@@ -19,7 +19,7 @@ public class OnClick : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-	
+		printToScreen ("");
 	}
 	
 	// Update is called once per frame
@@ -31,10 +31,10 @@ public class OnClick : MonoBehaviour
 	public void OnThisObjectClicked (int clickedWithId)
 	{
 		if (clickedWithId == idOfObjectToClickWith) {
-			print (correctMessage);
+			printToScreen (correctMessage);
 			CollectObject ();
 		} else {
-			print (incorrectMessage);
+			printToScreen (incorrectMessage);
 		}
 	}
 
@@ -43,13 +43,15 @@ public class OnClick : MonoBehaviour
 		Inventory_Slot_Placer inventory_Slot_Placer = slots.GetComponent<Inventory_Slot_Placer> ();
 		List<GameObject> availableSlots = inventory_Slot_Placer.objectsMade;
 		GameObject slotToFill = availableSlots [0];
+//		List<Inventory_Slot_Placer.InventorySlotInfo> filledSlots = inventory_Slot_Placer.filledSlotInfo;
 
 		slotToFill.SetActive (true);
-
 		FillSlotWithData (slotToFill);
 
-		availableSlots.RemoveAt (0);
+//		Inventory_Slot_Placer.InventorySlotInfo thisSlot = new Inventory_Slot_Placer.InventorySlotInfo (transform.name, id);
+//		filledSlots.Add (thisSlot);
 
+		availableSlots.RemoveAt (0);
 		Destroy (gameObject);
 	}
 
@@ -65,7 +67,7 @@ public class OnClick : MonoBehaviour
 		FillImage (slotToBeFilled, spritePath);
 
 		Button slotButton = slotToBeFilled.GetComponent<Button> ();
-		;
+
 		setId (slotButton);
 	}
 
@@ -96,5 +98,19 @@ public class OnClick : MonoBehaviour
 		fillSlot.onClick.AddListener (() => {
 			clickDetector.objectInHandSet (id);
 		});
+	}
+
+	void printToScreen (string stringToPrint)
+	{
+		GameObject messageCanvas = GameObject.Find ("Canvas-Message");
+		GameObject message = messageCanvas.transform.GetChild (0).gameObject;
+		GameObject textObject = message.transform.GetChild (2).gameObject;
+		Text text = textObject.GetComponent<Text> ();
+		text.text = stringToPrint;
+
+		message.SetActive (true);
+
+		TimeUntilHide timeUntilHide = message.GetComponent<TimeUntilHide> ();
+		timeUntilHide.timeUnhid = Time.realtimeSinceStartup;
 	}
 }

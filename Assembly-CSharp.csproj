@@ -47,8 +47,10 @@
   <ItemGroup>
      <Compile Include="Assets\CameraMove.cs" />
      <Compile Include="Assets\ClickDetector.cs" />
+     <Compile Include="Assets\InventoryHelper.cs" />
      <Compile Include="Assets\Inventory_Slot_Placer.cs" />
      <Compile Include="Assets\OnClick.cs" />
+     <Compile Include="Assets\TimeUntilHide.cs" />
      <Compile Include="Assets\sizeScript.cs" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
