@@ -19,7 +19,7 @@ public class OnClick : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		printToScreen ("");
+
 	}
 	
 	// Update is called once per frame
