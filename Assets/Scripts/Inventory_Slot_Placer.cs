@@ -120,9 +120,9 @@ public class Inventory_Slot_Placer : MonoBehaviour
 		print ("I: " + aR);
 
 		if (axisIsX) {
-			xCorrection = aR;
+			xCorrection = aR / n;
 		} else {
-			yCorrection = aR;
+			yCorrection = aR / n;
 		}
 
 		return n;
