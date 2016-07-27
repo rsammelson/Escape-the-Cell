@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEditor;
 
 public class Inventory_Slot_Placer : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class Inventory_Slot_Placer : MonoBehaviour
 	private int[,] map;
 
 	public List<GameObject> objectsMade;
+	//	public List<InventorySlotInfo> filledSlotInfo;
 
 	public GameObject firstSlot;
 
@@ -25,6 +28,19 @@ public class Inventory_Slot_Placer : MonoBehaviour
 		lastScreenSize = new Vector2 (Screen.width, Screen.height);
 
 		PlaceInventorySlots (screenSize, true);
+		
+		// -----
+
+		Button slot1 = firstSlot.GetComponent<Button> ();
+		GameObject mainCamera = GameObject.Find ("Main Camera");
+		ClickDetector clickDetector = mainCamera.GetComponent<ClickDetector> ();
+		GameObject inventory = this.gameObject.transform.parent.parent.gameObject;
+		CloseInventory closeInventory = inventory.GetComponent<CloseInventory> ();
+
+		slot1.onClick.AddListener (() => {
+			clickDetector.objectInHandSet (0);
+			closeInventory.Close ();
+		});
 	}
 	
 	// Update is called once per frame
@@ -44,11 +60,12 @@ public class Inventory_Slot_Placer : MonoBehaviour
 //		GameObject Slot1 = GameObject.Find ("InventorySlot");
 
 		firstSlot.SetActive (false);
-		if (!firstRun) {
-			foreach (GameObject thingToDestroy in objectsMade) {
-				Destroy (thingToDestroy);
-			}
+
+//		if (!firstRun) {
+		foreach (GameObject thingToDestroy in objectsMade) {
+			Destroy (thingToDestroy);
 		}
+//		}
 
 		objectsMade = new List<GameObject> ();
 
@@ -116,9 +133,9 @@ public class Inventory_Slot_Placer : MonoBehaviour
 		print ("I: " + aR);
 
 		if (axisIsX) {
-			xCorrection = aR;
+			xCorrection = aR / n;
 		} else {
-			yCorrection = aR;
+			yCorrection = aR / n;
 		}
 
 		return n;
@@ -137,9 +154,75 @@ public class Inventory_Slot_Placer : MonoBehaviour
 //		loc.x += fromLeft * (horizontalCorrection - (25));
 //		loc.y = loc.y - (fromTop * (verticalCorrection - (25)));
 
-		loc.x += fromLeft * (horizontalCorrection - (25));
-		loc.y = loc.y - (fromTop * (verticalCorrection - (50)));
+//		loc.x += fromLeft * (horizontalCorrection - (25));
+//		loc.y = loc.y - (fromTop * (verticalCorrection - (50)));
 
 		return loc;
 	}
+
+	// Slot Filling ----------------------------------------------------------------------------------------------------
+
+	//	void FillSlotsOnScreenChange ()
+	//	{
+	//		foreach (InventorySlotInfo slotData in filledSlotInfo) {
+	//			FillSlotWithData (objectsMade [0], slotData.nameOfObject, slotData.idOfObject);
+	//		}
+	//	}
+	//
+	//	void FillSlotWithData (GameObject slotToBeFilled, string name, int idOfObject)
+	//	{
+	//		string nameOfSpriteAsset = name + "Sprite.jpg";
+	//		string spritePath = "Assets/Sprites/" + nameOfSpriteAsset;
+	//
+	//		FillText (slotToBeFilled, name);
+	//
+	//		FillImage (slotToBeFilled, spritePath);
+	//
+	//		Button slotButton = slotToBeFilled.GetComponent<Button> ();
+	//
+	//		setId (slotButton, idOfObject);
+	//	}
+	//
+	//	void FillText (GameObject fillSlot, string textToAdd)
+	//	{
+	//		GameObject textObject = fillSlot.transform.GetChild (0).gameObject;
+	//		Text text = textObject.GetComponent<Text> ();
+	//		text.text = textToAdd;
+	//	}
+	//
+	//	void FillImage (GameObject fillSlot, string pathOfSprite)
+	//	{
+	//		Sprite sprite = AssetDatabase.LoadAssetAtPath (pathOfSprite, typeof(Sprite)) as Sprite;
+	//
+	//		GameObject imageObject = fillSlot.transform.GetChild (1).gameObject;
+	//		Image image = imageObject.GetComponent<Image> ();
+	//
+	//		print (pathOfSprite);
+	//		print (sprite);
+	//
+	//		image.sprite = sprite;
+	//	}
+	//
+	//	void setId (Button fillSlot, int id)
+	//	{
+	//		GameObject mainCamera = GameObject.Find ("Main Camera");
+	//		ClickDetector clickDetector = mainCamera.GetComponent<ClickDetector> ();
+	//		fillSlot.onClick.AddListener (() => {
+	//			clickDetector.objectInHandSet (id);
+	//		});
+	//	}
+
+	// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	//	public struct InventorySlotInfo
+	//	{
+	//		public string nameOfObject;
+	//		public int idOfObject;
+	//
+	//		public InventorySlotInfo (string name, int id)
+	//		{
+	//			nameOfObject = name;
+	//			idOfObject = id;
+	//		}
+	//	}
 }
