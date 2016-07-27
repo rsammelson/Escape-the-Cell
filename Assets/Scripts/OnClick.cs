@@ -95,8 +95,12 @@ public class OnClick : MonoBehaviour
 	{
 		GameObject mainCamera = GameObject.Find ("Main Camera");
 		ClickDetector clickDetector = mainCamera.GetComponent<ClickDetector> ();
+		GameObject inventory = slots.transform.parent.parent.gameObject;
+		CloseInventory closeInventory = inventory.GetComponent<CloseInventory> ();
+
 		fillSlot.onClick.AddListener (() => {
 			clickDetector.objectInHandSet (id);
+			closeInventory.Close ();
 		});
 	}
 

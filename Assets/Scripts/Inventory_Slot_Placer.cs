@@ -28,14 +28,18 @@ public class Inventory_Slot_Placer : MonoBehaviour
 		lastScreenSize = new Vector2 (Screen.width, Screen.height);
 
 		PlaceInventorySlots (screenSize, true);
-
+		
 		// -----
 
 		Button slot1 = firstSlot.GetComponent<Button> ();
 		GameObject mainCamera = GameObject.Find ("Main Camera");
 		ClickDetector clickDetector = mainCamera.GetComponent<ClickDetector> ();
+		GameObject inventory = this.gameObject.transform.parent.parent.gameObject;
+		CloseInventory closeInventory = inventory.GetComponent<CloseInventory> ();
+
 		slot1.onClick.AddListener (() => {
 			clickDetector.objectInHandSet (0);
+			closeInventory.Close ();
 		});
 	}
 	
@@ -150,8 +154,8 @@ public class Inventory_Slot_Placer : MonoBehaviour
 //		loc.x += fromLeft * (horizontalCorrection - (25));
 //		loc.y = loc.y - (fromTop * (verticalCorrection - (25)));
 
-		loc.x += fromLeft * (horizontalCorrection - (25));
-		loc.y = loc.y - (fromTop * (verticalCorrection - (50)));
+//		loc.x += fromLeft * (horizontalCorrection - (25));
+//		loc.y = loc.y - (fromTop * (verticalCorrection - (50)));
 
 		return loc;
 	}
