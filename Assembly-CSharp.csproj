@@ -45,9 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CloseInventory.cs" />
      <Compile Include="Assets\Scripts\CameraMove.cs" />
      <Compile Include="Assets\Scripts\ClickDetector.cs" />
+     <Compile Include="Assets\Scripts\CloseInventory.cs" />
      <Compile Include="Assets\Scripts\InventoryHelper.cs" />
      <Compile Include="Assets\Scripts\Inventory_Slot_Placer.cs" />
      <Compile Include="Assets\Scripts\OnClick.cs" />

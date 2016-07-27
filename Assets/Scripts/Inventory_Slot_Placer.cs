@@ -133,9 +133,9 @@ public class Inventory_Slot_Placer : MonoBehaviour
 		print ("I: " + aR);
 
 		if (axisIsX) {
-			xCorrection = aR / n;
+			xCorrection = (aR + 0) / (n - 1);
 		} else {
-			yCorrection = aR / n;
+			yCorrection = (aR + 0) / (n - 1);
 		}
 
 		return n;
@@ -149,13 +149,10 @@ public class Inventory_Slot_Placer : MonoBehaviour
 		int vSpace = height + verticalSpacing;
 
 		loc.x += fromLeft * hSpace;
-		loc.y = loc.y - (fromTop * vSpace);
+		loc.y -= (fromTop * vSpace);
 
-//		loc.x += fromLeft * (horizontalCorrection - (25));
-//		loc.y = loc.y - (fromTop * (verticalCorrection - (25)));
-
-//		loc.x += fromLeft * (horizontalCorrection - (25));
-//		loc.y = loc.y - (fromTop * (verticalCorrection - (50)));
+		loc.x += fromLeft * horizontalCorrection;
+		loc.y -= fromTop * verticalCorrection;
 
 		return loc;
 	}
