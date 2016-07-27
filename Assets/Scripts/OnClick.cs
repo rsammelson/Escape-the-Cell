@@ -59,7 +59,7 @@ public class OnClick : MonoBehaviour
 	{
 		string name = transform.name;
 
-		string nameOfSpriteAsset = name + "Sprite.jpg";
+		string nameOfSpriteAsset = "Sprite" + id + ".jpg";
 		string spritePath = "Assets/Sprites/" + nameOfSpriteAsset;
 
 		FillText (slotToBeFilled, name);

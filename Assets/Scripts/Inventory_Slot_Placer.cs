@@ -28,6 +28,15 @@ public class Inventory_Slot_Placer : MonoBehaviour
 		lastScreenSize = new Vector2 (Screen.width, Screen.height);
 
 		PlaceInventorySlots (screenSize, true);
+
+		// -----
+
+		Button slot1 = firstSlot.GetComponent<Button> ();
+		GameObject mainCamera = GameObject.Find ("Main Camera");
+		ClickDetector clickDetector = mainCamera.GetComponent<ClickDetector> ();
+		slot1.onClick.AddListener (() => {
+			clickDetector.objectInHandSet (0);
+		});
 	}
 	
 	// Update is called once per frame
