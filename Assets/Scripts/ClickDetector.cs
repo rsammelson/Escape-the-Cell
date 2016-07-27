@@ -109,9 +109,8 @@ public class ClickDetector : MonoBehaviour
 
 		Image objectImage = canvasMain.transform.GetChild (2).GetChild (1).gameObject.GetComponent<Image> ();
 
-		string nameOfSpriteAsset = "Sprite" + inHand + ".jpg";
-		string spritePath = "Assets/Sprites/" + nameOfSpriteAsset;
-		Sprite sprite = AssetDatabase.LoadAssetAtPath (spritePath, typeof(Sprite)) as Sprite;
+		string nameOfSpriteAsset = "Sprite" + inHand;
+		Sprite sprite = Resources.Load<Sprite> (nameOfSpriteAsset);
 
 		objectImage.sprite = sprite;
 		print (sprite);
