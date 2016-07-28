@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using UnityEditor;
 
 public class Inventory_Slot_Placer : MonoBehaviour
 {
