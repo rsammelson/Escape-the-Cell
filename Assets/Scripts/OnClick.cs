@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using UnityEditor;
 
 public class OnClick : MonoBehaviour
 {
@@ -59,12 +58,11 @@ public class OnClick : MonoBehaviour
 	{
 		string name = transform.name;
 
-		string nameOfSpriteAsset = "Sprite" + id + ".jpg";
-		string spritePath = "Assets/Sprites/" + nameOfSpriteAsset;
+		string nameOfSpriteAsset = "Sprite" + id;
 
 		FillText (slotToBeFilled, name);
 
-		FillImage (slotToBeFilled, spritePath);
+		FillImage (slotToBeFilled, nameOfSpriteAsset);
 
 		Button slotButton = slotToBeFilled.GetComponent<Button> ();
 
@@ -80,7 +78,7 @@ public class OnClick : MonoBehaviour
 
 	void FillImage (GameObject fillSlot, string pathOfSprite)
 	{
-		Sprite sprite = AssetDatabase.LoadAssetAtPath (pathOfSprite, typeof(Sprite)) as Sprite;
+		Sprite sprite = Resources.Load<Sprite> (pathOfSprite);
 
 		GameObject imageObject = fillSlot.transform.GetChild (1).gameObject;
 		Image image = imageObject.GetComponent<Image> ();
