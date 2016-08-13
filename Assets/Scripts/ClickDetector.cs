@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using UnityEditor;
 
 public class ClickDetector : MonoBehaviour
 {
@@ -11,12 +13,16 @@ public class ClickDetector : MonoBehaviour
 
 	public int objectInHand = 0;
 
+	public GameObject canvasMain;
+
 	// Use this for initialization
 	void Start ()
 	{
 		wasHit = false;
 		hitName = null;
 		hitObject = null;
+
+		objectInHandSet (0);
 	}
 
 	// Update is called once per frame
@@ -98,5 +104,17 @@ public class ClickDetector : MonoBehaviour
 	public void objectInHandSet (int inHand)
 	{
 		objectInHand = inHand;
+
+		// -----
+
+		Image objectImage = canvasMain.transform.GetChild (2).GetChild (1).gameObject.GetComponent<Image> ();
+
+		string nameOfSpriteAsset = "Sprite" + inHand + ".jpg";
+		string spritePath = "Assets/Sprites/" + nameOfSpriteAsset;
+		Sprite sprite = AssetDatabase.LoadAssetAtPath (spritePath, typeof(Sprite)) as Sprite;
+
+		objectImage.sprite = sprite;
+		print (sprite);
+		print (objectImage);
 	}
 }
