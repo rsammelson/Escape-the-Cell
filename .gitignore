@@ -1,4 +1,6 @@
 Temp/*
 Temp/
+Library/ShaderCache/*
+Library/ShaderCache/
 
 *.log
